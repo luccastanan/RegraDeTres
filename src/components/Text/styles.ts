@@ -1,12 +1,13 @@
 import styled from "styled-components/native";
 
-export type CustomTextProps = {
+type CustomTextProps = {
   size: number;
   fontWeight: number;
+  color: string;
 };
 
 export const CustomText = styled.Text<CustomTextProps>`
   font-size: ${(props) => props.size}px;
   font-weight: ${(props) => props.fontWeight};
-  color: #000;
+  color: ${(props) => props.color};
 `;

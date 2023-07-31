@@ -1,48 +1,78 @@
 import React from "react";
 
 import * as S from "./styles";
+import { TextSizes, TextTypes, TextWeight } from "./types";
 
-enum TextSizes {
-  "H1" = 26,
-  "H2" = 24,
-  "H3" = 22,
-  "H4" = 20,
-  "H5" = 18,
-  "H6" = 16,
-  "H7" = 14,
-  "H8" = 12,
-}
-
-enum TextWeight {
-  "Regular" = 400,
-  "Medium" = 500,
-  "Bold" = 700,
-}
-
-type TextTypes = "Title" | "Subtitle" | "Normal";
-
-const TextTypesProps: Record<TextTypes, S.CustomTextProps> = {
+const TextTypesProps: Record<TextTypes, TextProps> = {
   Title: {
-    size: TextSizes.H5,
-    fontWeight: TextWeight.Bold,
+    size: "H5",
+    fontWeight: "bold",
+    color: "#000",
   },
   Subtitle: {
-    size: TextSizes.H7,
-    fontWeight: TextWeight.Regular,
+    size: "H7",
+    fontWeight: "regular",
+    color: "#000",
   },
   Normal: {
-    size: TextSizes.H7,
-    fontWeight: TextWeight.Medium,
+    size: "H7",
+    fontWeight: "medium",
+    color: "#000",
   },
 };
 
-type TextProps = {
+type AllTextProps = {
   type?: TextTypes;
   children: React.ReactNode;
+} & TextProps;
+
+type TextProps = {
+  size?: keyof typeof TextSizes | number;
+  fontWeight?: keyof typeof TextWeight;
+  color?: string;
 };
 
-const Text: React.FC<TextProps> = ({ type = "Normal", children }) => {
-  return <S.CustomText {...TextTypesProps[type]}>{children}</S.CustomText>;
+const Text: React.FC<AllTextProps> = ({
+  children,
+  type = "Normal",
+  size,
+  fontWeight,
+  color,
+  ...props
+}) => {
+  const base = TextTypesProps[type];
+
+  const getSize = (): number => {
+    if (typeof size === "number") {
+      return size;
+    }
+    if (size) {
+      return TextSizes[size];
+    }
+    return TextSizes[base.size];
+  };
+
+  const getFontWeight = (): number => {
+    if (fontWeight) {
+      return TextWeight[fontWeight];
+    }
+    return TextWeight[base.fontWeight];
+  };
+
+  const getColor = (): string => {
+    return color || base.color;
+  };
+
+  return (
+    <S.CustomText
+      size={getSize()}
+      fontWeight={getFontWeight()}
+      color={getColor()}
+      {...props}
+    >
+      {children}
+    </S.CustomText>
+  );
 };
 
 export default Text;

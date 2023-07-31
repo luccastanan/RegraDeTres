@@ -3,7 +3,7 @@
     "name": "RegraDeTres",
     "slug": "RegraDeTres",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "all",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -11,15 +11,19 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.luccastanan.RegraDeTres"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.luccastanan.RegraDeTres"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -27,5 +31,8 @@
     "experiments": {
       "tsconfigPaths": true
     }
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-3032392588437437~3633085376"
   }
 }
