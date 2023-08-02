@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1080269257316",
+    "project_id": "regra-dos-tres",
+    "storage_bucket": "regra-dos-tres.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080269257316:android:564552ea7148b1a6ee3d71",
+        "android_client_info": {
+          "package_name": "com.luccastanan.RegraDeTres"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080269257316-6l1j9v477b8mjt5pj05a24ifgm6v5r4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.luccastanan.RegraDeTres",
+            "certificate_hash": "d310a999f8f760c31d917d0b8f94fca05055cd22"
+          }
+        },
+        {
+          "client_id": "1080269257316-jjnor272svqpfpbqpv8nsifoolub7ngb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwBEU04ZNf8ZpR01SiHh46aQKufsYUiaE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080269257316-jjnor272svqpfpbqpv8nsifoolub7ngb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

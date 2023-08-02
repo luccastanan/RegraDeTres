@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "@/screens/Home";
 import { ThemeProvider } from "styled-components/native";
 import { lightTheme } from "@/constants/theme";
+import { StatusBar } from "react-native";
 
 const Snack = createNativeStackNavigator();
 /* import {
@@ -27,6 +28,7 @@ export default function App() {
   appOpenAd.show(); */
   return (
     <ThemeProvider theme={lightTheme}>
+      <StatusBar backgroundColor={lightTheme.colors.PRIMARY_COLOR} />
       <NavigationContainer>
         <Snack.Navigator>
           <Snack.Screen

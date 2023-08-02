@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "RegraDeTres",
+    "name": "Regra de Três",
     "slug": "RegraDeTres",
     "version": "1.0.0",
     "orientation": "all",
@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.luccastanan.RegraDeTres"
