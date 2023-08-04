@@ -1,9 +1,10 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "@/screens/Home";
-import { ThemeProvider } from "styled-components/native";
-import { lightTheme } from "@/constants/theme";
-import { StatusBar } from "react-native";
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from '@/screens/Home';
+import {ThemeProvider} from 'styled-components/native';
+import {lightTheme} from '@/constants/theme';
+import {NativeModules, Platform, StatusBar} from 'react-native';
+import {useEffect} from 'react';
 
 const Snack = createNativeStackNavigator();
 /* import {
@@ -26,6 +27,13 @@ export default function App() {
 
   // Show the app open ad when user brings the app to the foreground.
   appOpenAd.show(); */
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      NativeModules.SplashScreenModule.hide();
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={lightTheme}>
       <StatusBar backgroundColor={lightTheme.colors.PRIMARY_COLOR} />

@@ -1,17 +1,17 @@
-import React from "react";
-import { TextInputProps } from "react-native";
+import React from 'react';
+import {TextInputProps} from 'react-native';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 type InputProps = {
   message?: string;
-  status?: "error" | "default";
+  status?: 'error' | 'default';
 } & TextInputProps;
 
 const Input: React.ForwardedRef<InputProps> = React.forwardRef(
-  ({ message = "", status = "default", ...props }, ref) => {
+  ({message = '', status = 'default', ...props}, ref) => {
     const renderMessage = () => {
-      if (!message && status !== "error") return null;
+      if (!message && status !== 'error') return null;
 
       return <S.ErrorMessage>{message}</S.ErrorMessage>;
     };
@@ -19,10 +19,10 @@ const Input: React.ForwardedRef<InputProps> = React.forwardRef(
     return (
       <S.Container>
         <S.StyledInput {...props} ref={ref} />
-        {renderMessage()}
+        <S.ErrorContainer>{renderMessage()}</S.ErrorContainer>
       </S.Container>
     );
-  }
+  },
 );
 
 export default Input;

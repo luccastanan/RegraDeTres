@@ -1,35 +1,6 @@
 {
-  "expo": {
-    "name": "Regra de Três",
-    "slug": "RegraDeTres",
-    "version": "1.0.0",
-    "orientation": "all",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.luccastanan.RegraDeTres"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.luccastanan.RegraDeTres"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "experiments": {
-      "tsconfigPaths": true
-    }
-  },
+  "name": "RegraDeTres",
+  "displayName": "Regra de Três",
   "react-native-google-mobile-ads": {
     "android_app_id": "ca-app-pub-3032392588437437~3633085376"
   }

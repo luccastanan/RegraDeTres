@@ -1,20 +1,20 @@
-import styled from "styled-components/native";
-import { Input as BaseInput, Text, Icon } from "@/components";
-import BoxShadow from "@/components/BoxShadow";
+import styled from 'styled-components/native';
+import {Input as BaseInput, Text, Icon} from '@/components';
+import BoxShadow from '@/components/BoxShadow';
 
 export const Container = styled.View`
   flex: 1;
 `;
 
 export const BackgroundImage = styled.Image.attrs({
-  source: require("@/assets/images/grid.png"),
-  resizeMode: "repeat",
+  source: require('@/assets/images/grid.png'),
+  resizeMode: 'repeat',
 })`
   position: absolute;
   width: 100%;
   top: 0;
   bottom: 0;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_COLOR};
+  background-color: ${({theme}) => theme.colors.BACKGROUND_COLOR};
 `;
 
 export const CardContainer = styled(BoxShadow).attrs({
@@ -29,12 +29,13 @@ export const CardContainer = styled(BoxShadow).attrs({
 export const Row = styled.View`
   flex-direction: row;
   align-items: center;
+  margin-bottom: 4px;
 `;
 
 export const ArrowIcon = styled(Icon).attrs({
-  name: "ArrowRight",
+  name: 'ArrowRight',
   size: 20,
-  color: "black",
+  color: 'black',
 })`
   margin: 0px 8px 20px 8px;
 `;
@@ -54,7 +55,7 @@ export const ResultContainer = styled.View`
 `;
 
 export const Result = styled(Text).attrs({
-  type: "Title",
+  type: 'Title',
   size: 70,
 })`
   background-color: rgba(255, 255, 255, 0.6);
