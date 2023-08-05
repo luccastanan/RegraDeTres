@@ -4,13 +4,33 @@ import Text from '@/components/Text';
 
 export const PressContainer = styled(TouchableNativeFeedback)``;
 
-export const Container = styled.View`
+export const BaseContainer = styled.View`
   padding: 8px 16px;
   align-items: center;
   border-radius: 50px;
+`;
+
+export const NormalContainer = styled(BaseContainer)`
   background-color: ${({theme}) => theme.colors.ACCENT_COLOR};
 `;
 
-export const Label = styled(Text).attrs(({theme}) => ({
+export const GhostContainer = styled(BaseContainer)``;
+
+export const OutlineContainer = styled(BaseContainer)`
+  border-color: ${({theme}) => theme.colors.ACCENT_COLOR};
+  border-width: 1px;
+`;
+
+export const BaseLabel = styled(Text)``;
+
+export const NormalLabel = styled(BaseLabel).attrs(({theme}) => ({
   color: theme.colors.BACKGROUND_COLOR,
+}))``;
+
+export const GhostLabel = styled(BaseLabel).attrs(({theme}) => ({
+  color: theme.colors.ACCENT_COLOR,
+}))``;
+
+export const OutlineLabel = styled(BaseLabel).attrs(({theme}) => ({
+  color: theme.colors.ACCENT_COLOR,
 }))``;

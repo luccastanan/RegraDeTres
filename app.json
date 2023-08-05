@@ -2,6 +2,7 @@
   "name": "RegraDeTres",
   "displayName": "Regra de Três",
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-3032392588437437~3633085376"
+    "android_app_id": "ca-app-pub-3032392588437437~3633085376",
+    "ios_app_id": "ca-app-pub-xxxxxxxx~xxxxxxxx"
   }
 }

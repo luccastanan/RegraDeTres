@@ -1,11 +1,12 @@
 import React, {useRef, useState} from 'react';
-import {Screen, Button} from '@/components';
+import {TextInput, ToastAndroid} from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {BannerAds, Screen, Button} from '@/components';
 import * as S from './styles';
-import {TextInput} from 'react-native';
-import analytics from '@react-native-firebase/analytics';
+import {useOrientation} from '@/hooks/useScreenOrientation';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 export type FormInputs = {
   value1: string;
@@ -20,11 +21,12 @@ export enum InputKeys {
 }
 
 const Home: React.FC = () => {
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState<number>();
+  const {isPortrait} = useOrientation();
   const inputValue1 = useRef<TextInput>();
   const inputGreatness1 = useRef<TextInput>();
   const inputValue2 = useRef<TextInput>();
-  const {control, handleSubmit} = useForm<FormInputs>({
+  const {control, handleSubmit, reset} = useForm<FormInputs>({
     resolver: yupResolver(
       yup.object().shape({
         [InputKeys.VALUE1]: yup.string().required('Digite um valor'),
@@ -34,17 +36,28 @@ const Home: React.FC = () => {
     ),
   });
 
-  const calc = (values: Record<InputKeys, string>) => {
-    console.log(values);
-
+  const handleCalc = (values: Record<InputKeys, string>) => {
     const v1 = parseFloat(values.value1);
     const v2 = parseFloat(values.greatness1);
     const v3 = parseFloat(values.value2);
     const _result = (v2 * v3) / v1;
-    analytics().logEvent('calc', {
-      result: _result,
-    });
+
     setResult(_result);
+  };
+
+  const handleClear = () => {
+    reset();
+    setResult(undefined);
+    inputValue1.current.focus();
+  };
+
+  const formatResult = () => {
+    return String(parseFloat(result.toFixed(4))).replace('.', ',');
+  };
+
+  const handleCopy = () => {
+    Clipboard.setString(formatResult());
+    ToastAndroid.show('Resultado copiado!', ToastAndroid.SHORT);
   };
 
   const renderValue1Input = () => {
@@ -112,7 +125,7 @@ const Home: React.FC = () => {
             message={error?.message}
             status={!!error && 'error'}
             keyboardType="numeric"
-            onSubmitEditing={() => handleSubmit(calc)()}
+            onSubmitEditing={() => handleSubmit(handleCalc)()}
             selectTextOnFocus
           />
         )}
@@ -121,26 +134,48 @@ const Home: React.FC = () => {
     );
   };
 
+  const renderResult = () => {
+    if (result === undefined) return;
+
+    return (
+      <>
+        <S.Result selectable onPress={handleCopy}>
+          {formatResult()}
+        </S.Result>
+        <S.CopyButton text="Copiar" onPress={handleCopy} />
+      </>
+    );
+  };
+
   return (
     <Screen>
       <S.BackgroundImage />
-      <S.Container>
-        <S.CardContainer>
-          <S.Row>
-            {renderValue1Input()}
-            <S.ArrowIcon />
-            {renderGreatness1Input()}
-          </S.Row>
-          <S.Row>
-            {renderValue2Input()}
-            <S.ArrowIcon />
-            <S.XLabel>X</S.XLabel>
-          </S.Row>
-          <Button onPress={() => handleSubmit(calc)()} text="Calcular" />
+      <BannerAds />
+      <S.Container isPortrait={isPortrait}>
+        <S.CardContainer isPortrait={isPortrait}>
+          <S.Card>
+            <S.Row>
+              {renderValue1Input()}
+              <S.ArrowIcon />
+              {renderGreatness1Input()}
+            </S.Row>
+            <S.Row>
+              {renderValue2Input()}
+              <S.ArrowIcon />
+              <S.XLabel>X</S.XLabel>
+            </S.Row>
+            <Button
+              onPress={() => handleSubmit(handleCalc)()}
+              text="Calcular"
+            />
+            <Button
+              onPress={handleClear}
+              text="Limpar"
+              appearanceStyle="ghost"
+            />
+          </S.Card>
         </S.CardContainer>
-        <S.ResultContainer>
-          <S.Result>{result}</S.Result>
-        </S.ResultContainer>
+        <S.ResultContainer>{renderResult()}</S.ResultContainer>
       </S.Container>
     </Screen>
   );

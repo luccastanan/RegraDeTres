@@ -1,9 +1,18 @@
-import styled from 'styled-components/native';
-import {Input as BaseInput, Text, Icon} from '@/components';
+import styled, {css} from 'styled-components/native';
+import {Input as BaseInput, Text, Icon, Button} from '@/components';
 import BoxShadow from '@/components/BoxShadow';
 
-export const Container = styled.View`
+type OrientationProps = {
+  isPortrait: boolean;
+};
+
+export const Container = styled.View<OrientationProps>`
   flex: 1;
+  ${({isPortrait}) =>
+    !isPortrait &&
+    css`
+      flex-direction: row;
+    `}
 `;
 
 export const BackgroundImage = styled.Image.attrs({
@@ -17,14 +26,20 @@ export const BackgroundImage = styled.Image.attrs({
   background-color: ${({theme}) => theme.colors.BACKGROUND_COLOR};
 `;
 
-export const CardContainer = styled(BoxShadow).attrs({
-  containerStyle: {
-    borderRadius: 16,
-    padding: 16,
-    marginHorizontal: 16,
-    marginTop: 16,
-  },
-})``;
+export const CardContainer = styled.View<OrientationProps>`
+  ${({isPortrait}) =>
+    !isPortrait &&
+    css`
+      flex: 1;
+    `}
+`;
+
+export const Card = styled(BoxShadow)`
+  border-radius: 16px;
+  padding: 12px 16px 16px 16px;
+  margin-horizontal: 16px;
+  margin-top: 16px;
+`;
 
 export const Row = styled.View`
   flex-direction: row;
@@ -36,13 +51,16 @@ export const ArrowIcon = styled(Icon).attrs({
   name: 'ArrowRight',
   size: 20,
   color: 'black',
+  weight: 'bold',
 })`
   margin: 0px 8px 20px 8px;
 `;
 
 export const Input = styled(BaseInput)``;
 
-export const XLabel = styled(Text)`
+export const XLabel = styled(Text).attrs({
+  size: 'H4',
+})`
   flex: 1;
   text-align: center;
   margin-bottom: 20px;
@@ -60,4 +78,7 @@ export const Result = styled(Text).attrs({
 })`
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 32px;
+  margin-horizontal: 8px;
 `;
+
+export const CopyButton = styled(Button)``;
