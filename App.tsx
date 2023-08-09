@@ -5,10 +5,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '@/screens/Home';
 import {ThemeProvider} from 'styled-components/native';
 import {lightTheme} from '@/constants/theme';
+import 'i18n.config';
+import {useTranslation} from 'react-i18next';
 
 const Snack = createNativeStackNavigator();
 
 export default function App() {
+  const {t} = useTranslation();
+
   useEffect(() => {
     if (Platform.OS === 'android') {
       NativeModules.SplashScreenModule.hide();
@@ -21,7 +25,7 @@ export default function App() {
       <NavigationContainer>
         <Snack.Navigator>
           <Snack.Screen
-            name="Regra de 3"
+            name={t('appName')}
             component={Home}
             options={{
               headerStyle: {

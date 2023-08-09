@@ -1,5 +1,6 @@
 import React from 'react';
 import {BannerAd, BannerAdSize, TestIds} from 'react-native-google-mobile-ads';
+import analytics from '@react-native-firebase/analytics';
 
 const adUnitId = __DEV__
   ? TestIds.BANNER
@@ -12,6 +13,11 @@ const BannerAds: React.FC = () => {
       size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
       requestOptions={{
         requestNonPersonalizedAdsOnly: true,
+      }}
+      onAdFailedToLoad={error => {
+        analytics().logEvent('banner_ads_failed', {
+          error: error.message,
+        });
       }}
     />
   );

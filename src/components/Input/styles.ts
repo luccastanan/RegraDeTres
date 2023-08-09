@@ -19,7 +19,17 @@ export const StyledInput = styled(AnimatedTextInput).attrs(({theme}) => ({
   padding-horizontal: 16px;
   padding-vertical: 8px;
 `;
-// export const Label = styled(AnimatedText)``;
+
+export const Placeholder = styled(Animated.Text)`
+  position: absolute;
+  left: 16px;
+`;
+
+export const PlaceholderContainer = styled.View.attrs({
+  pointerEvents: 'none',
+})`
+  position: absolute;
+`;
 
 export const ErrorContainer = styled.View`
   min-height: 20px;

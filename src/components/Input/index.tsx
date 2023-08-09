@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import * as S from './styles';
-import Animated, {
+import {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -76,18 +76,9 @@ const Input: React.ForwardedRef<InputProps> = React.forwardRef(
             {...props}
             ref={ref}
           />
-          <View pointerEvents="none" style={{position: 'absolute'}}>
-            <Animated.Text
-              style={[
-                {
-                  position: 'absolute',
-                  left: 16,
-                },
-                inputStyle,
-              ]}>
-              {placeholder}
-            </Animated.Text>
-          </View>
+          <S.PlaceholderContainer>
+            <S.Placeholder style={inputStyle}>{placeholder}</S.Placeholder>
+          </S.PlaceholderContainer>
         </View>
         <S.ErrorContainer>{renderMessage()}</S.ErrorContainer>
       </S.Container>

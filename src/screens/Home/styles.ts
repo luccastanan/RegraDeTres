@@ -68,17 +68,33 @@ export const XLabel = styled(Text).attrs({
 
 export const ResultContainer = styled.View`
   flex: 1;
+  margin: 8px 16px;
+`;
+
+export const ResultDescription = styled(Text).attrs({
+  size: 'H3',
+})`
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 32px;
+  text-align: center;
+`;
+
+export const AnswerContainer = styled.View`
+  flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
-export const Result = styled(Text).attrs({
+type ResultProps = {
+  isBigger: boolean;
+};
+
+export const Result = styled(Text).attrs<ResultProps>(({isBigger}) => ({
   type: 'Title',
-  size: 70,
-})`
+  size: isBigger ? 52 : 72,
+}))`
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 32px;
-  margin-horizontal: 8px;
 `;
 
 export const CopyButton = styled(Button)``;
