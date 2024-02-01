@@ -26,7 +26,8 @@ export const BackgroundImage = styled.Image.attrs({
   background-color: ${({theme}) => theme.colors.BACKGROUND_COLOR};
 `;
 
-export const CardContainer = styled.View<OrientationProps>`
+export const CardContainer = styled.ScrollView<OrientationProps>`
+  flex-grow: 0;
   ${({isPortrait}) =>
     !isPortrait &&
     css`
@@ -39,6 +40,7 @@ export const Card = styled(BoxShadow)`
   padding: 12px 16px 16px 16px;
   margin-horizontal: 16px;
   margin-top: 16px;
+  margin-bottom: 1px;
 `;
 
 export const Row = styled.View`
@@ -66,9 +68,14 @@ export const XLabel = styled(Text).attrs({
   margin-bottom: 20px;
 `;
 
-export const ResultContainer = styled.View`
+export const ResultContainer = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    flexGrow: 1,
+    paddingVertical: 8,
+  },
+})`
   flex: 1;
-  margin: 8px 16px;
+  margin: 0px 16px;
 `;
 
 export const ResultDescription = styled(Text).attrs({

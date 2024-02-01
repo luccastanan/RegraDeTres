@@ -1,5 +1,4 @@
-import {useEffect} from 'react';
-import {NativeModules, Platform, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '@/screens/Home';
@@ -12,12 +11,6 @@ const Snack = createNativeStackNavigator();
 
 export default function App() {
   const {t} = useTranslation();
-
-  useEffect(() => {
-    if (Platform.OS === 'android') {
-      NativeModules.SplashScreenModule.hide();
-    }
-  }, []);
 
   return (
     <ThemeProvider theme={lightTheme}>

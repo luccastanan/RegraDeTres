@@ -5,11 +5,16 @@ export default {
     'Se {{if}} equivale a {{equals}}, então {{then}} equivale a:',
   copy: 'Copiar',
   form: {
-    typeValue: 'Digite um valor',
+    messages: {
+      enterValue: 'Digite um valor',
+      typeValue: 'Digite um número',
+    },
+    type: 'Digite um valor',
     if: 'Se',
     equals: 'equivale a',
     then: 'então',
     x: 'X',
+    inversely: 'Inversamente proporcional',
     calc: 'Calcular',
     clean: 'Limpar',
   },

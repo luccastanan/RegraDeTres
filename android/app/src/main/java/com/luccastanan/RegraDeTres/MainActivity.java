@@ -6,16 +6,12 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
-import com.luccastanan.RegraDeTres.modules.SplashScreen.SplashScreenModule;
 
 public class MainActivity extends ReactActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     setTheme(R.style.AppTheme);
-
-    SplashScreenModule.show(this);
-
     super.onCreate(savedInstanceState);
   }
 

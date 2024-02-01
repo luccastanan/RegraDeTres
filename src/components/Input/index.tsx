@@ -8,6 +8,7 @@ import {
 
 import * as S from './styles';
 import {
+  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -34,10 +35,12 @@ const Input: React.ForwardedRef<InputProps> = React.forwardRef(
   ) => {
     const theme = useTheme();
     const isFocused = useSharedValue(false);
-    const inputValue = useSharedValue('');
     const inputStyle = useAnimatedStyle(() => {
       const fontSize = withTiming(!!value ? 14 : 20);
-      const top = withTiming(!!value ? -10 : 8);
+      const top = withTiming(!!value ? -10 : 8, {
+        duration: 300,
+        easing: Easing.out(Easing.exp),
+      });
       const color = withTiming(
         !!value
           ? theme.colors.PRIMARY_COLOR

@@ -1,8 +1,12 @@
-import {TouchableNativeFeedback} from 'react-native';
+import {
+  Pressable,
+  TouchableHighlight,
+  TouchableNativeFeedback,
+} from 'react-native';
 import styled from 'styled-components/native';
 import Text from '@/components/Text';
 
-export const PressContainer = styled(TouchableNativeFeedback)``;
+export const PressContainer = styled(Pressable)``;
 
 export const BaseContainer = styled.View`
   padding: 8px 16px;
@@ -21,7 +25,9 @@ export const OutlineContainer = styled(BaseContainer)`
   border-width: 1px;
 `;
 
-export const BaseLabel = styled(Text)``;
+export const BaseLabel = styled(Text)`
+  text-align: center;
+`;
 
 export const NormalLabel = styled(BaseLabel).attrs(({theme}) => ({
   color: theme.colors.BACKGROUND_COLOR,

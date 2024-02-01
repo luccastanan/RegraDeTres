@@ -8,7 +8,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
-import com.luccastanan.RegraDeTres.modules.SplashScreen.SplashScreenPackage;
 
 import java.util.List;
 
@@ -25,7 +24,6 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
-           packages.add(new SplashScreenPackage());
           return packages;
         }
 

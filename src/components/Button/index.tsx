@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './styles';
 import {IStyledComponent} from 'styled-components/native';
-import {TextProps} from 'react-native';
+import {TextProps, TouchableNativeFeedback, View} from 'react-native';
 import {Substitute} from 'styled-components/native/dist/types';
 import {TextTypes} from '../Text/types';
 
@@ -62,9 +62,22 @@ const Button: React.FC<ButtonProps> = ({
   const Label = Labels[appearanceStyle];
 
   return (
-    <S.PressContainer onPress={onPress}>
+    <S.PressContainer
+      onPress={onPress}
+      android_ripple={{
+        radius: 0,
+        color: '#000000',
+        borderless: false,
+        foreground: true,
+      }}
+      // background={TouchableNativeFeedback.SelectableBackgroundBorderless(20)}>
+      /* background={TouchableNativeFeedback.Ripple('#000000', true, 20)}> */
+      // background={TouchableNativeFeedback.SelectableBackground(20)}>
+    >
       <Container>
+        {/* <View style={{width: '100%'}}> */}
         <Label>{text.toString()}</Label>
+        {/* </View> */}
       </Container>
     </S.PressContainer>
   );
