@@ -4,6 +4,10 @@ export default {
   resultDescription: 'If {{if}} equals {{equals}}, then {{then}} equals:',
   copy: 'Copy',
   form: {
+    messages: {
+      enterValue: 'Enter a value',
+      typeValue: 'Enter a number',
+    },
     typeValue: 'Type a value',
     if: 'If',
     equals: 'equals',

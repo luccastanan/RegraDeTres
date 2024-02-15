@@ -1,5 +1,5 @@
 apply plugin: "com.android.application"
-apply plugin: 'com.google.firebase.appdistribution'
+apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
@@ -50,8 +50,8 @@ react {
     //   The hermes compiler command to run. By default it is 'hermesc'
     // hermesCommand = "$rootDir/my-custom-hermesc/bin/hermesc"
     //
-    //   TheS list of flags to pass to the Hermes compiler. By default is "-O", "-output-source-map"
-    // hermesFlags = ["asasA-O", "-output-source-map"]
+    //   The list of flags to pass to the Hermes compiler. By default is "-O", "-output-source-map"
+    // hermesFlags = ["-O", "-output-source-map"]
 }
 
 /**
@@ -74,16 +74,16 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
     ndkVersion rootProject.ext.ndkVersion
-
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.luccastanan.RegraDeTres"
     defaultConfig {
         applicationId "com.luccastanan.RegraDeTres"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
-        versionName "1.5"
+        versionCode 7
+        versionName "1.6"
     }
     signingConfigs {
         debug {
@@ -106,10 +106,6 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            firebaseCrashlytics {
-                nativeSymbolUploadEnabled true
-                unstrippedNativeLibsDir 'build/intermediates/merged_native_libs/release/out/lib'
-            }
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.release
@@ -122,16 +118,8 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation("com.facebook.react:flipper-integration")
 
-    implementation platform('com.google.firebase:firebase-bom:32.2.0')
-    implementation 'com.google.firebase:firebase-analytics'
-
-    debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
-    debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
-    }
-
-    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

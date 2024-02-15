@@ -1,10 +1,15 @@
+/* type SectionProps = PropsWithChildren<{
+  title: string;
+}>; */
+
+//function Section({children, title}: SectionProps): React.JSX.Element {
 import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '@/screens/Home';
 import {ThemeProvider} from 'styled-components/native';
 import {lightTheme} from '@/constants/theme';
-import 'i18n.config';
+import './i18n.config';
 import {useTranslation} from 'react-i18next';
 
 const Snack = createNativeStackNavigator();

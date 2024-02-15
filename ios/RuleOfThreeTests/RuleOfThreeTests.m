@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface RegraDeTresTests : XCTestCase
+@interface RuleOfThreeTests : XCTestCase
 
 @end
 
-@implementation RegraDeTresTests
+@implementation RuleOfThreeTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

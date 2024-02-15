@@ -210,7 +210,6 @@ const Home: React.FC = () => {
   return (
     <Screen>
       <S.BackgroundImage />
-      <BannerAds />
       <S.Container isPortrait={isPortrait}>
         <S.CardContainer isPortrait={isPortrait}>
           <S.Card>
@@ -238,6 +237,7 @@ const Home: React.FC = () => {
         </S.CardContainer>
         <S.ResultContainer>{renderResult()}</S.ResultContainer>
       </S.Container>
+      <BannerAds />
     </Screen>
   );
 };
